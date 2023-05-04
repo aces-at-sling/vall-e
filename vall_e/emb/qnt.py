@@ -90,8 +90,8 @@ def main():
     parser.add_argument("folder", type=Path)
     parser.add_argument("--suffix", default=".wav")
     args = parser.parse_args()
-    print("Path: " , paths)
     paths = [*args.folder.rglob(f"*{args.suffix}")]
+    print("Path: " , paths)
     random.shuffle(paths)
 
     for path in tqdm(paths):
