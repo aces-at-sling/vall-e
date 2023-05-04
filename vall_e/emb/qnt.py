@@ -78,6 +78,8 @@ def encode_from_file(path, device="cuda"):
     print("\n")
     print(wav)
     print(sr)
+    print("\n")
+    print(wav.shape)
     if wav.shape[0] == 2:
         wav = wav[:1]
     return encode(wav, sr, device)
