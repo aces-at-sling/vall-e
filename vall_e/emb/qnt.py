@@ -64,7 +64,7 @@ def encode(wav: Tensor, sr: int, device="cuda"):
     print("2:")
     print(wav)
     np.save("output.npy", wav)
-    np.load("output.txt")
+    np.load("output.npy")
     wav = convert_audio(wav, sr, model.sample_rate, model.channels)
     wav = wav.to(device)
     encoded_frames = model.encode(wav)
