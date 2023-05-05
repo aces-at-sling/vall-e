@@ -1,5 +1,6 @@
 import argparse
 import random
+import numpy as np
 from functools import cache
 from pathlib import Path
 
@@ -62,9 +63,7 @@ def encode(wav: Tensor, sr: int, device="cuda"):
     wav = wav.unsqueeze(0)
     print("2:")
     print(wav)
-    with open('output.txt', 'w') as f:
-          f.write(wav)
-    f.close()
+    np.savetxt('output.txt', torch.Tensor(wav).numpy())
     wav = convert_audio(wav, sr, model.sample_rate, model.channels)
     wav = wav.to(device)
     encoded_frames = model.encode(wav)
