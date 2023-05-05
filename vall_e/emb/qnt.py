@@ -63,7 +63,7 @@ def encode(wav: Tensor, sr: int, device="cuda"):
     wav = wav.unsqueeze(0)
     print("2:")
     print(wav)
-    np.savetxt('output.txt', torch.Tensor(wav).numpy())
+    np.save("output.npy", wav)
     wav = convert_audio(wav, sr, model.sample_rate, model.channels)
     wav = wav.to(device)
     encoded_frames = model.encode(wav)
